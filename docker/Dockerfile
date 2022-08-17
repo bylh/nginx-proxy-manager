@@ -20,6 +20,7 @@ ENV SUPPRESS_NO_CONFIG_WARNING=1 \
 
 RUN echo "fs.file-max = 65535" > /etc/sysctl.conf \
 	&& apt-get update \
+    && apt-get install -y --no-install-recommends apt-utils \
 	&& apt-get install -y --no-install-recommends jq logrotate \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
@@ -35,7 +36,7 @@ COPY frontend/dist /app/frontend
 COPY global        /app/global
 
 WORKDIR /app
-RUN yarn install
+# RUN yarn install
 
 # add late to limit cache-busting by modifications
 COPY docker/rootfs /

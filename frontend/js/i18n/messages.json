@@ -41,7 +41,7 @@
       "title": "Login to your account"
     },
     "main": {
-      "app": "Nginx Proxy Manager",
+      "app": "域名管理系统",
       "version": "v{version}",
       "welcome": "Welcome to Nginx Proxy Manager",
       "logged-in": "You are logged in as {name}",
