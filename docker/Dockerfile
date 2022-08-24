@@ -23,6 +23,11 @@ RUN echo "fs.file-max = 65535" > /etc/sysctl.conf \
     && apt-get install -y --no-install-recommends apt-utils \
 	&& apt-get install -y --no-install-recommends jq logrotate \
 	&& apt-get clean \
+    && apt-get install -y sudo \
+    && apt-get install -y vim \
+    && apt-get install -y wget \
+    && apt-get install -y rsync \
+    && apt-get install -y inotify-tools\
 	&& rm -rf /var/lib/apt/lists/*
 
 # s6 overlay
@@ -62,3 +67,6 @@ LABEL org.label-schema.schema-version="1.0" \
 	org.label-schema.url="https://github.com/jc21/nginx-proxy-manager" \
 	org.label-schema.vcs-url="https://github.com/jc21/nginx-proxy-manager.git" \
 	org.label-schema.cmd="docker run --rm -ti jc21/nginx-proxy-manager:latest"
+
+
+# sudo docker build --pull --no-cache --compress -t bylh-nginx-config -f docker/Dockerfile --build-arg TARGETPLATFORM=linux/amd64 --build-arg BUILDPLATFORM=linux/amd64 .
